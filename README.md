@@ -13,7 +13,7 @@ Provide complete start-to-end reproducible analysis of our replications for the 
 
 All R codes for a statistical repoduction of their results and extenstion with alternative models in:
 
-*Portfolio_Kern_Vanberg_Replication.R
+* Portfolio_Kern_Vanberg_Replication.R
 
     
 
