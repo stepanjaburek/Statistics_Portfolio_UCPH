@@ -12,7 +12,8 @@ Provide complete start-to-end reproducible analysis of our replications for the 
 **1. Replication 1 Kern and Vanberg (2024)
 
 All R codes for a statistical repoduction of their results and extenstion with alternative models in:
-Portfolio_Kern_Vanberg_Replication.R
+
+*Portfolio_Kern_Vanberg_Replication.R
 
     
 
@@ -21,4 +22,6 @@ Portfolio_Kern_Vanberg_Replication.R
 
 ** Work in the semester
 
-* LATEX_and_Overleaf - Presentation on the basics of latex typesetting
+ Presentation on the basics of latex typesetting
+
+* LATEX_and_Overleaf
