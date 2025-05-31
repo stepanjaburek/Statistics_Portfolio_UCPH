@@ -9,7 +9,8 @@ Provide complete start-to-end reproducible analysis of our replications for the 
 
 
 ## Current Repository Contents
-**1. Replication 1 Kern and Vanberg (2024)
+
+** 1. Replication 1 Kern and Vanberg (2024)
 
 All R codes for a statistical repoduction of their results and extenstion with alternative models in:
 
@@ -17,7 +18,7 @@ All R codes for a statistical repoduction of their results and extenstion with a
 
     
 
-**2. Replication 2 Back et al. (2021)
+** 2. Replication 2 Back et al. (2021)
 
 
 ** Work in the semester
