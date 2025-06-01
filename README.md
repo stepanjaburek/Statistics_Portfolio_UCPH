@@ -19,12 +19,18 @@ All R codes for a statistical repoduction of their results and extenstion with a
 
 * Portfolio_Kern_Vanberg_Replication.R
 
-    
 
 ## 2. Replication 2 Back et al. (2021)
 
+All R codes for a statistical repoduction of their results and extenstion with alternative models in:
+
+* Portfolio_Baeck_et_al_Replication.R
 
 ## Work in the semester
+
+Presentation on the basics of RMarkdown
+
+* R_Markdown.pdf
 
  Presentation on the basics of latex typesetting
 
