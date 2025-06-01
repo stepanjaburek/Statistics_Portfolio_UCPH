@@ -19,8 +19,6 @@ library(purrr)
 
 #---------------------------------------------------
 # Data
-setwd("~/Desktop/Copenhagen/Beyond Linear Regression/Assignments/Assignment 1/Data Analysis 1")
-
 load("df.rda")
 
 #------------------------------------------------------------------------------
