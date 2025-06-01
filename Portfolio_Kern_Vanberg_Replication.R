@@ -117,52 +117,37 @@ flexplot(convicted_num~1, df) +
 
 sum(df$convicted)/length(df$convicted)
 
-df$crime <- ifelse(df$Denunciation == 1, "Denunciation",
-                   ifelse(df$Euthanasia == 1, "Euthanasia",
-                          ifelse(df$FinalPhase == 1, "Final Phase of War",
-                                 ifelse(df$ExterminationEinsatzgruppen == 1, "Extermination Einsatzgruppen ",
-                                        ifelse(df$ExterminationCamps == 1, "Extermination in Camps",
-                                               ifelse(df$ExterminationOther == 1, "Extermination other",
-                                                      ifelse(df$Judicial == 1, "Judicial",
-                                                             ifelse(df$NSDetainment ==1, "NS Detainment",
-                                                                    ifelse(df$NSOther ==1, "NS Other",
-                                                                           ifelse(df$WarCrimes ==1, "War Crimes","" ))))))))))
-create_crime_labels <- function(row) {
-  crimes <- c()
-  if(row$Denunciation == 1) crimes <- c(crimes, "Denunciation")
-  if(row$Euthanasia == 1) crimes <- c(crimes, "Euthanasia")
-  if(row$FinalPhase == 1) crimes <- c(crimes, "Final Phase of War")
-  if(row$ExterminationEinsatzgruppen == 1) crimes <- c(crimes, "Extermination Einsatzgruppen")
-  if(row$ExterminationCamps == 1) crimes <- c(crimes, "Extermination in Camps")
-  if(row$ExterminationOther == 1) crimes <- c(crimes, "Extermination Other")
-  if(row$Judicial == 1) crimes <- c(crimes, "Judicial")
-  if(row$NSDetainment == 1) crimes <- c(crimes, "NS Detainment")
-  if(row$NSOther == 1) crimes <- c(crimes, "NS Other")
-  if(row$WarCrimes == 1) crimes <- c(crimes, "War Crimes")
 
-  if(length(crimes) == 0) return("None")
-  return(paste(crimes, collapse = ", "))
-}
+# plot the number of crimes
+crimes <- df %>% 
+  reframe(
+  Denunciation = Denunciation,
+  Euthanasia = Euthanasia,
+  FinalPhase = FinalPhase,
+  ExterminationEinsatzgruppen = ExterminationEinsatzgruppen,
+  ExterminationCamps = ExterminationCamps,
+  ExterminationOther = ExterminationOther,
+  Judicial = Judicial,
+  NSDetainment = NSDetainment,
+  NSOther = NSOther,
+  WarCrimes = WarCrimes
+)
 
+# Calculate the sums of the columns
+crime_sums <- colSums(crimes)
 
+crime_sums_df <- data.frame(
+  Crime = names(crime_sums),
+  Count = as.numeric(crime_sums)
+)
 
+crime_sums_df$Crime <- fct_reorder(crime_sums_df$Crime, crime_sums_df$Count)
 
-df$crime_multiple <- pmap_chr(df[, c(
-  "Denunciation", "Euthanasia", "FinalPhase",
-  "ExterminationEinsatzgruppen", "ExterminationCamps", "ExterminationOther",
-  "Judicial", "NSDetainment", "NSOther", "WarCrimes"
-)], function(...) create_crime_labels(as.list(list(...))))
-
-####################
-
-# Cross-tabulation
-xtabs(~ Judicial + FirstSessionYear + state, data = df)
-df$crime<-as.factor(df$crime)
-
-flexplot(crime~1, df) +
-           labs(title = "Number of Charges per Type of Crime ") +
+# Create the bar plot with sorted bars
+ggplot(crime_sums_df, aes(x = Crime, y = Count)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Number of Charges per Type of Crime") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
 
 
 #----------------------------------------------------------------
