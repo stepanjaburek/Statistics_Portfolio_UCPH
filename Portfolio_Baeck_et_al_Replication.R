@@ -11,7 +11,7 @@
 # ==================================== # 
 
 # Load data 
-load("~/Desktop/Copenhagen/Beyond Linear Regression/Assignments/Assignment 2/Data Analysis/df-1.rda")
+load("df-1.rda")
 
 # Load packages
 library(dplyr)
